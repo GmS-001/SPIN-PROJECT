@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{data.name}}</title>
+    <link rel="stylesheet" href="static/css/influencer_profile.css">
+</head>
+<body>
+    <header>
+        <div class = 'home-page'>
+            <a href = '{{url_for("user.home")}}'><img src = 'static/images/icons/home-03.png'></a> 
+        </div>
+        <div class = 'navigation'>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/search-refraction.png'></div>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/pencil-02.png'></div>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/annotation-question.png'></div>
+            <a href = '{{url_for("camp_req.prev_campaign", username = data.username)}}' ><div class='navigation-buttons'>Previous Campaigns</div></a>
+            <a href = '{{url_for("user.home")}}'><div class = 'navigation-buttons'>Logout</div></a>
+        </div>
+    </header>
+    <div class = 'outer-container'>
+        <div class = 'profile-pic'>
+            <img src="{{ url_for('static', filename='images/uploads/' + data['picture']) }}" alt="Profile Picture">
+        </div>
+        <div class = 'personal-details'>
+            <div class = 'username-flag-container'>
+                <div class = 'username'>
+                    <h2>@{{data.username}}</h2>
+                </div>
+                {% if  data.is_flagged %}
+                 <div class = 'flag'>
+                    <img src = 'static/images/icons/Triangular Flag.png'>
+                 </div>
+                {% endif %}
+            </div>
+            <div class = 'name'>
+                <h3>{{data.name}}</h3>
+            </div>
+            <div class = 'age-gender'>
+                <p ><strong>AGE : {{data.age}}</strong></p>
+                <p ><strong>GENDER : {{data.gender}}</strong></p>
+                <p ><strong>NICHE : {{data.niche}}</strong></p>
+            </div>
+            <div class = 'numbers'>
+                <h5><strong>&#8226; Ongoing Campaigns</strong></h5>
+                <div class = 'figureo'>{{data.ongoing_campaigns}}</div>
+            </div>
+            <div class = 'numbers'>
+                <h5><strong>&#8226; Successful Campaigns </strong></h5>
+                <div class = 'figures'>{{data.successful_campaigns}}</div>
+            </div>
+        </div>
+    </div>
+    <div class = 'followers'>
+        <h5>{{data.name}} has influence on platforms such as Youtube,X,Instagram,Snapchat.</h5>
+    </div>
+</body>
+</html>

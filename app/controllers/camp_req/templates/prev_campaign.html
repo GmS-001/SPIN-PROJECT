@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previous Campaigns</title>
+    <link rel="stylesheet" href="static/css/prev_campaign.css">
+</head>
+<body>
+    <header>
+        <div class = 'home-page'>
+            <a href = '{{url_for("user.home")}}'><img src = 'static/images/icons/home-03.png'></a> 
+        </div>
+        <div class = 'navigation'>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/search-refraction.png'></div>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/pencil-02.png'></div>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/annotation-question.png'></div>
+            <a href = '{{url_for("user.home")}}'><div class = 'navigation-buttons'>Logout</div></a>
+        </div>
+    </header>
+    {% if campaign_list %}
+    <h2>Your Previous Campaigns :</h2>
+      {% for campaign in campaign_list %}
+      <div class = 'ongoing-campaigns-container'>
+        <div class="quarter-1">
+            <div class = 'ongoing-product-pic'>
+                <img src="{{ url_for('static', filename='images/uploads/' + campaign.picture) }}" alt="Profile Picture">
+            </div>
+            <div class = 'ongoing-product-info'> 
+                <div class = 'onogoing-product-name'>
+                    <div class = 'onogoing-product-name'>
+                        <div class = 'name-visibility'>
+                            <strong>{{campaign.name}}</strong>
+                            {% if campaign.visibility == 'Public' %}
+                            <img src = 'static/images/icons/Frame 3963.png'>
+                            {% elif campaign.visibility == 'Private' %}
+                            <img src = 'static/images/icons/Frame 3964.png'>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class = 'onogoing-product-goal'>
+                    <strong>Goals :</strong>{{campaign.goal}}
+                </div>
+            </div>
+        </div>
+        <div class="quarter-2">
+            <strong>Description :</strong>{{campaign.description}}
+            
+        </div>
+        <div class="quarter-3">
+            <p><strong>&#8226; Partner : {{campaign.partner}}</strong></p>
+            <p><strong>&#8226; Total Posts :  {{campaign.total_posts}}</strong></p>
+            <p><strong>&#8226; Payment : {{campaign.budget}}</strong></p>
+            <a href = '{{url_for("camp_req.campaign",campaign_id = campaign.id)}}'><button class = 'campaign-link'>EXPAND</button></a>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+    <div class ='none'>
+        <h2>You have not completed campaigns yet!</h2>
+    </div>
+    {% endif %}
+
+</body>
+</html>

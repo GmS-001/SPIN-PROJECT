@@ -1,0 +1,42 @@
+{% extends "login_layout.html" %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="form-title">Add Requests</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Initiator</th>
+                <th>Initiated_for</th>
+                <th>campaign_id</th>
+                <th>sponsor_id</th>
+                <th>influencer_id</th>
+                <th>message</th>
+                <th>payment</th>
+                <th>posts</th>
+                <th>status</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for add_req in add_reqs %}
+            <tr>
+                <td>{{ add_req.id }}</td>
+                <td>{{ add_req.initiator }}</td>
+                <td>{{ add_req.initiated_for }}</td>
+                <td>{{ add_req.campaign_id }}</td>
+                <td>{{ add_req.sponsor_id }}</td>
+                <td>{{ add_req.influencer_id }}</td>
+                <td>{{ add_req.message }}</td>
+                <td>{{ add_req.payment }}</td>
+                <td>{{ add_req.posts }}</td>
+                <td>{{ add_req.status }}</td>
+                <td>{{ add_req.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

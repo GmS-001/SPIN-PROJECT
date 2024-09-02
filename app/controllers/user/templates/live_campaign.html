@@ -1,0 +1,48 @@
+{% extends "login_layout.html" %}
+
+
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="form-title">Live Campaigns</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>sponsor_id</th>
+                <th>influencer_id</th>
+                <th>description</th>
+                <th>start_date</th>
+                <th>end_date</th>
+                <th>budget</th>
+                <th>posts</th>
+                <th>total_posts</th>
+                <th>visibility</th>
+                <th>goal</th>
+                <th>ad_requests</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for campaign in live_campaign %}
+            <tr>
+                <td>{{ campaign.id }}</td>
+                <td>{{ campaign.name }}</td>
+                <td>{{ campaign.sponsor_id }}</td>
+                <td>{{ campaign.influencer_id }}</td>
+                <td>{{ campaign.description }}</td>
+                <td>{{ campaign.start_date }}</td>
+                <td>{{ campaign.end_date }}</td>
+                <td>{{ campaign.budget }}</td>
+                <td>{{ campaign.posts }}</td>
+                <td>{{ campaign.total_posts }}</td>
+                <td>{{ campaign.visibility }}</td>
+                <td>{{ campaign.goal }}</td>
+                <td>{{ campaign.ad_requests }}</td>
+                <td>{{ campaign.picture }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</div>
+{% endblock %}

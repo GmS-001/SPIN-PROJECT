@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{data.name}}</title>
+    <link rel="stylesheet" href="static/css/sponsor_profile.css">
+</head>
+<body>
+    <header>
+        <div class = 'home-page'>
+            <a href = '{{url_for("user.home")}}'><img src = 'static/images/icons/home-03.png'></a> 
+        </div>
+        <div class = 'navigation'>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/search-refraction.png'></div>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/pencil-02.png'></div>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/annotation-question.png'></div>
+            <a href = '{{url_for("camp_req.prev_campaign", username = data.username)}}' ><div class='navigation-buttons'>Previous Campaigns</div></a>
+            <a href = '{{url_for("user.home")}}'><div class = 'navigation-buttons'>Logout</div></a>
+        </div>
+    </header>
+    <div class = 'outer-container'>
+        <div class = 'profile-pic'>
+            <img src="{{ url_for('static', filename='images/uploads/' + data['picture']) }}" alt="Profile Picture">
+        </div>
+        <div class = 'personal-details'>
+            <div class = 'username-flag-container'>
+                <div class = 'username'>
+                    <h2>@{{data.username}}</h2>
+                </div>
+                {% if  data.is_flagged %}
+                 <div class = 'flag'>
+                    <img src = 'static/images/icons/Triangular Flag.png'>
+                 </div>
+                {% endif %}
+            </div>
+            <div class = 'name-industry'>
+                <h2>{{data.name}}</h2>
+                <p ><strong>NICHE : {{data.industry}}</strong></p>
+          </div>
+            <div class = 'numbers'>
+                <h5><strong>&#8226; Ongoing Campaigns</strong></h5>
+                <div class = 'figureo'>{{data.ongoing_campaigns}}</div>
+            </div>
+            <div class = 'numbers'>
+                <h5><strong>&#8226; Successful Campaigns </strong></h5>
+                <div class = 'figures'>{{data.successful_campaigns}}</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

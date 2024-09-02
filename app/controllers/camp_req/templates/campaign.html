@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{camp_name}}</title>
+    <link rel="stylesheet" href="static/css/campaign.css">
+<body>
+        <header>
+            <div class = 'home-page'>
+                <a href = '{{url_for("user.home")}}'><img src = 'static/images/icons/home-03.png'></a> 
+            </div>
+            <div class = 'navigation'>
+                <div class = 'navigation-icons'><img src = 'static/images/icons/search-refraction.png'></div>
+                <div class = 'navigation-icons'><img src = 'static/images/icons/pencil-02.png'></div>
+                <div class = 'navigation-icons'><img src = 'static/images/icons/annotation-question.png'></div>
+                <a href = '{{url_for("user.home")}}'><div class = 'navigation-buttons'>Logout</div></a>
+            </div>
+    </header>
+    <div class="wrapper">
+        <div class="sponsor-container">
+            <a href="{{url_for('profiles.sponsor_profile',username = sponsor_username)}}" class="sponsor-link">
+                <div class="sponsor-name">{{sponsor_name}}</div>
+            </a>
+        </div>
+    </div>
+    <div class = 'product-pic'>
+        <img src="{{ url_for('static', filename='images/uploads/' + picture) }}" alt="Profile Picture">
+      </div>
+    {% if influencer_data %}
+       {% if  posts > 0 %}
+        <div class = 'taken'>
+            <h5>ONGOING CAMPAIGN.The product promotion is currently taken !</h5>
+        </div>
+        {% else %}
+        <div class = 'taken'>
+            <h4>CAMPAIGN COMPLETED!!! </h4>
+        </div>
+        {% endif %}
+    <div class = 'influencer-container'>
+        <div class = 'influencer-details'>
+            <a href = '{{url_for("profiles.influencer_profile",username = influencer_data.username)}}'>
+                <div class = 'profile-pic'>
+                    <img src="{{ url_for('static', filename='images/uploads/' + influencer_data.picture) }}" alt="Profile Picture">
+                </div>
+            </a>
+            <div class = 'name-age'>
+                <p>Name : {{influencer_data.name}}</p>
+                <p>Age : {{influencer_data.age}} Yrs</p>
+            </div>
+            <div class = 'status'>
+                <p><strong>&#8226; Days Left : {{days_left}}</strong></p>
+                <p><strong>&#8226; Posts Left : {{posts}}</strong></p>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class = "not-taken"><h5>Sponsors are searching for Influencer.</h5></div>
+    {% endif %}
+    
+    <div class = 'outer-container'>
+        <h2 class = 'campaign-title'>{{camp_name}}</h2>
+        <span class = 'description'>{{description}}</span>
+        <h3 class = 'goal-heading'> OBJECTIVE :</h3>
+        <p class = 'goal'>{{goal}}</p>
+        <div class = 'details'>
+            <div><strong>&#8226; Niche : {{sponsor_industry}}</strong> </div>
+            <div><strong>&#8226;Start Date : {{st_date}}</strong> </div>
+            <div><strong>&#8226;Visiblity : {{visibility}}</strong> </div>
+            <div><strong>&#8226; End Date : {{end_date}}</strong></div>
+            <div><strong>&#8226;Budget : {{budget}}</strong>  </div>
+        </div>
+    </div>
+</body>
+</html>

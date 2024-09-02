@@ -1,0 +1,93 @@
+{% extends "login_layout.html" %}
+
+
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="form-title">Flagged Influencers</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Phone Number</th>
+                <th>Date of Birth</th>
+                <th>Niche</th>
+                <th>Gender</th>
+                <th>campaigns</th>
+                <th>ad_requests</th>
+                <th>is_flagged</th>
+                <th>Ongoing Campaigns</th>
+                <th>Successful Campaigns</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for influencer in flagged_influencers %}
+            <tr>
+                <td>{{ influencer.id }}</td>
+                <td>{{ influencer.name }}</td>
+                <td>{{ influencer.username }}</td>
+                <td>{{ influencer.email }}</td>
+                <td>{{ influencer.password }}</td>
+                <td>{{ influencer.phone_number }}</td>
+                <td>{{ influencer.dob }}</td>
+                <td>{{ influencer.niche }}</td>
+                <td>{{ influencer.gender }}</td>
+                <td>{{ influencer.campaigns }}</td>
+                <td>{{ influencer.ad_requests }}</td>
+                <td>{{ influencer.is_flagged }}</td>
+                <td>{{ influencer.ongoing_campaigns }}</td>
+                <td>{{ influencer.successful_campaigns }}</td>
+                <td>{{ influencer.picture }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2 class="form-title">Flagged Sponsors</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>username</th>
+                <th>password</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Industry</th>
+                <th>campaigns</th>
+                <th>payments</th>
+                <th>ad_requests</th>
+                <th>is_flagged</th>
+                <th>Ongoing Campaigns</th>
+                <th>Successful Campaigns</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sponsor in flagged_sponsors %}
+            <tr>
+                <td>{{ sponsor.id }}</td>
+                <td>{{ sponsor.name }}</td>
+                <td>{{ sponsor.username }}</td>
+                <td>{{ sponsor.password }}</td>
+                <td>{{ sponsor.email }}</td>
+                <td>{{ sponsor.phone_number }}</td>
+                <td>{{ sponsor.industry }}</td>
+                <td>{{ sponsor.campaigns }}</td>
+                <td>{{ sponsor.payments }}</td>
+                <td>{{ sponsor.ad_requests }}</td>
+                <td>{{ sponsor.is_flagged }}</td>
+                <td>{{ sponsor.ongoing_campaigns }}</td>
+                <td>{{ sponsor.successful_campaigns }}</td>
+                <td>{{ sponsor.picture }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends "login_layout.html" %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="form-title">All Influencers</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Phone Number</th>
+                <th>Date of Birth</th>
+                <th>Niche</th>
+                <th>Gender</th>
+                <th>campaigns</th>
+                <th>ad_requests</th>
+                <th>is_flagged</th>
+                <th>Ongoing Campaigns</th>
+                <th>Successful Campaigns</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for influencer in influencers %}
+            <tr>
+                <td>{{ influencer.id }}</td>
+                <td>{{ influencer.name }}</td>
+                <td>{{ influencer.username }}</td>
+                <td>{{ influencer.email }}</td>
+                <td>{{ influencer.password }}</td>
+                <td>{{ influencer.phone_number }}</td>
+                <td>{{ influencer.dob }}</td>
+                <td>{{ influencer.niche }}</td>
+                <td>{{ influencer.gender }}</td>
+                <td>{{ influencer.campaigns }}</td>
+                <td>{{ influencer.ad_requests }}</td>
+                <td>{{ influencer.is_flagged }}</td>
+                <td>{{ influencer.ongoing_campaigns }}</td>
+                <td>{{ influencer.successful_campaigns }}</td>
+                <td>{{ influencer.picture }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2 class="form-title">All Sponsors</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>username</th>
+                <th>password</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Industry</th>
+                <th>campaigns</th>
+                <th>payments</th>
+                <th>ad_requests</th>
+                <th>is_flagged</th>
+                <th>Ongoing Campaigns</th>
+                <th>Successful Campaigns</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sponsor in sponsors %}
+            <tr>
+                <td>{{ sponsor.id }}</td>
+                <td>{{ sponsor.name }}</td>
+                <td>{{ sponsor.username }}</td>
+                <td>{{ sponsor.password }}</td>
+                <td>{{ sponsor.email }}</td>
+                <td>{{ sponsor.phone_number }}</td>
+                <td>{{ sponsor.industry }}</td>
+                <td>{{ sponsor.campaigns }}</td>
+                <td>{{ sponsor.payments }}</td>
+                <td>{{ sponsor.ad_requests }}</td>
+                <td>{{ sponsor.is_flagged }}</td>
+                <td>{{ sponsor.ongoing_campaigns }}</td>
+                <td>{{ sponsor.successful_campaigns }}</td>
+                <td>{{ sponsor.picture }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2 class="form-title">Add Requests</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Initiator</th>
+                <th>Initiated_for</th>
+                <th>campaign_id</th>
+                <th>sponsor_id</th>
+                <th>influencer_id</th>
+                <th>message</th>
+                <th>payment</th>
+                <th>posts</th>
+                <th>status</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for add_req in add_reqs %}
+            <tr>
+                <td>{{ add_req.id }}</td>
+                <td>{{ add_req.initiator }}</td>
+                <td>{{ add_req.initiated_for }}</td>
+                <td>{{ add_req.campaign_id }}</td>
+                <td>{{ add_req.sponsor_id }}</td>
+                <td>{{ add_req.influencer_id }}</td>
+                <td>{{ add_req.message }}</td>
+                <td>{{ add_req.payment }}</td>
+                <td>{{ add_req.posts }}</td>
+                <td>{{ add_req.status }}</td>
+                <td>{{ add_req.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2 class="form-title">Campaigns</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>sponsor_id</th>
+                <th>influencer_id</th>
+                <th>description</th>
+                <th>start_date</th>
+                <th>end_date</th>
+                <th>budget</th>
+                <th>posts</th>
+                <th>total_posts</th>
+                <th>visibility</th>
+                <th>goal</th>
+                <th>ad_requests</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for campaign in campaigns %}
+            <tr>
+                <td>{{ campaign.id }}</td>
+                <td>{{ campaign.name }}</td>
+                <td>{{ campaign.sponsor_id }}</td>
+                <td>{{ campaign.influencer_id }}</td>
+                <td>{{ campaign.description }}</td>
+                <td>{{ campaign.start_date }}</td>
+                <td>{{ campaign.end_date }}</td>
+                <td>{{ campaign.budget }}</td>
+                <td>{{ campaign.posts }}</td>
+                <td>{{ campaign.total_posts }}</td>
+                <td>{{ campaign.visibility }}</td>
+                <td>{{ campaign.goal }}</td>
+                <td>{{ campaign.ad_requests }}</td>
+                <td>{{ campaign.picture }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</div>
+{% endblock %}

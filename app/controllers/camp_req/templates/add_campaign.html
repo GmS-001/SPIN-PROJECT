@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Campaign</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/add_campaign.css">
+</head>
+<body>
+    <header>
+        <div class = 'home-page'>
+            <a href = '{{url_for("user.home")}}'><img src = 'static/images/icons/home-03.png'></a> 
+        </div>
+        <div class = 'navigation'>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/search-refraction.png'></div>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/pencil-02.png'></div>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/annotation-question.png'></div>
+            <a href = '{{url_for("camp_req.prev_campaign", username = username)}}' ><div class='navigation-buttons'>Previous Campaigns</div></a>
+            <a href = '{{url_for("user.home")}}'><div class = 'navigation-buttons'>Logout</div></a>
+        </div>
+    </header>
+    <div class="custom-container mt-5">
+        <h2 class="form-title">Publish New Campaign</h2>
+        <form action="{{ url_for('camp_req.add_campaign',username = username) }}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="username" value="{{ username }}">
+            <div class="form-group">
+                <label for="camp_name">Campaign Name</label>
+                <input type="text" class="form-control" id="name" name="camp_name" placeholder="Enter the name of your Campaign">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" name="description" placeholder="Give a breif description of you product">
+            </div>
+            <div class="form-group">
+                <label for="start_date">Start_date</label>
+                <input type="date" class="form-control" id="start_date" name="start_date" placeholder="Enter the start date of your campaign">
+            </div>
+            <div class="form-group">
+                <label for="end_date">End_date</label>
+                <input type="date" class="form-control" id="end_date" name="end_date" placeholder="Enter the end date of your campaign">
+            </div>
+            <div class="form-group">
+                <label for="goal">Goal</label>
+                <input type="text" class="form-control" id="goal" name="goal" placeholder="Let us know your aim">
+            </div>
+            <div class="form-group">
+                <label for="budget">Budget</label>
+                <input type="text" class="form-control" id="budget" name="budget" placeholder="Enter your budget">
+            </div>
+            <div class="form-group">
+                <label for="visibility">Visibility</label>
+                <select class="form-control" id="visibility" name="visibility">
+                    <option>Public</option>
+                    <option>Private</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="picture">Profile Picture</label>
+                <input type="file" class="form-control" id="picture" name="picture">
+            </div>
+            <button type="submit" class="btn btn-custom btn-block">Upload</button>
+        </form>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/campaign_list.css">
+    <title>Sponsor Campaign List</title>
+</head>
+<header>
+    <div class = 'home-page'>
+        <a href = '{{url_for("user.home")}}'><img src = 'static/images/icons/home-03.png'></a> 
+    </div>
+    <div class = 'navigation'>
+        <div class = 'navigation-icons'><img src = 'static/images/icons/search-refraction.png'></div>
+        <div class = 'navigation-icons'><img src = 'static/images/icons/pencil-02.png'></div>
+        <div class = 'navigation-icons'><img src = 'static/images/icons/annotation-question.png'></div>
+        <a href = '{{url_for("camp_req.prev_campaign", username = username)}}' ><div class='navigation-buttons'>Previous Campaigns</div></a>
+        <a href = '{{url_for("user.home")}}'><div class = 'navigation-buttons'>Logout</div></a>
+    </div>
+</header>
+
+    <div class="container mt-5">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>   
+    {% if campaigns %}
+    <div class = 'no-work'>
+        <h2>Your Campaigns</h2>
+    </div>
+    {% for campaign in campaigns %}
+        <div class = 'ongoing-campaigns-container'>
+            <div class="quarter-1">
+                <div class = 'ongoing-product-pic'>
+                    <img src="{{ url_for('static', filename='images/uploads/' + campaign.picture) }}" alt="Profile Picture">
+                </div>
+                <div class = 'ongoing-product-info'> 
+                    <div class = 'onogoing-product-name'>
+                        <div class = 'name-visibility'>
+                            <strong>{{campaign.camp_name}}</strong>
+                            {% if campaign.visibility == 'Public' %}
+                            <img src = 'static/images/icons/Frame 3963.png'>
+                            {% elif campaign.visibility == 'Private' %}
+                            <img src = 'static/images/icons/Frame 3964.png'>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class = 'onogoing-product-goal'>
+                        <strong>Goals :</strong>{{campaign.goal}}
+                    </div>
+                </div>
+            </div>
+            <div class="quarter-2">
+                <strong>Description :</strong>{{campaign.description}}
+            </div>
+            <div class="quarter-3">
+                <a href = '{{url_for("camp_req.influencers_list",username = username,campaign_name = campaign.name)}}'><button class = 'campaign-link'>Influencers</button></a>
+                <a href = '{{url_for("camp_req.campaign",campaign_id = campaign.id)}}'><button class = 'campaign-link'>EXPAND</button></a>
+            </div>
+        </div>
+    {% endfor %}
+    {% else %}
+    <div class = 'no-work'>
+        <h2>You have got no unassigned Campaigns. Make new Campaign First !</h2>
+    </div>
+    {% endif %}
+</body>
+</html>

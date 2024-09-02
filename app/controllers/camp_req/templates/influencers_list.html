@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencers_list</title>
+    <link rel="stylesheet" href="static/css/influencers_list.css">
+</head>
+<body>
+    <header>
+        <div class = 'home-page'>
+            <a href = '{{url_for("user.home")}}'><img src = 'static/images/icons/home-03.png'></a> 
+        </div>
+        <div class = 'navigation'>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/search-refraction.png'></div>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/pencil-02.png'></div>
+            <div class = 'navigation-icons'><img src = 'static/images/icons/annotation-question.png'></div>
+            <a href = '{{url_for("camp_req.prev_campaign", username = username)}}' ><div class='navigation-buttons'>Previous Campaigns</div></a>
+            <a href = '{{url_for("user.home")}}'><div class = 'navigation-buttons'>Logout</div></a>
+        </div>
+    </header>
+    {% for influencer in influencer_data %}
+    <div class = 'influencer-container'>
+        <div class = 'influencer-details'>
+            <a href = '{{url_for("profiles.influencer_profile",username = influencer.username)}}'>
+                <div class = 'profile-pic'>
+                  <img src="{{ url_for('static', filename='images/uploads/' + influencer.picture) }}" alt="Profile Picture">
+                </div>
+            </a>
+            <div class = 'name-age'>
+                <p>Name : {{influencer.name}}</p>
+                <p>Age : {{influencer.age}} Yrs</p>
+            </div>
+            <div class = 'status'>
+                <p><strong>&#8226; Industry : {{influencer.niche}}</strong></p>
+                <a href = '{{url_for("camp_req.add_request",username = username,campaign_name = campaign_name,influencer_name = influencer.username)}}'><button class = 'campaign-link'>Send Request</button></a>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+</body>
+</html>

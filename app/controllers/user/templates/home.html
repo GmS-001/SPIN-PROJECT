@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPIN</title>
+  <link rel="stylesheet" href="static/css/home.css">
+</head>
+<body>
+
+  <header>
+    <h1>SPIN</h1>
+    <nav>
+      <a href="#about-us" class="header-button">About Us</a>
+      <a href="#about-us" class="header-button">Contact Us</a>
+      <a href="#contact-us" class="header-button">Help</a>
+    </nav>
+  </header>
+
+    <div class="background-section">
+      <div class="overlay">
+        <span class = 'welcome'>Welcome to SPIN !</span>
+        <h3>Empowering Influencers and Brands</h3>
+        <p>Discover a world of possibilities at SPIN, where innovation meets excellence. Whether you're looking for the latest insights or seeking to connect with like-minded individuals, you've come to the right place.</p>
+      </div>
+    </div>
+
+  <section class="login">
+    <span> Join Us Today</span>
+    <a href= "{{url_for('user.user_login')}}" class="cta-button">Login</a>
+    New Member?
+    <a href= "{{url_for('auth.signup_i')}}" class="cta-link"> Sign Up Here for influencers</a>
+    <a href= "{{url_for('auth.signup_s')}} " class="cta-link"> Sign Up Here for sponsors</a>
+
+  </section>
+
+  <div class="features">
+    <div class = 'heading'>
+      What Our Clients Say
+    </div>
+    <span>Don't just take our word for it—here's what our clients have to say</span>
+    <img src = 'static/images/icons/influencers.jpg'>
+    <div class="testimony">
+      <p><strong>&#8226; 'The best service I’ve ever experienced! Highly recommended.' – Tim Cook</strong></p>
+      <p><strong>&#8226; 'Their attention to detail is unmatched.' – Anurag Kashyap</strong></p>
+      <p><strong>&#8226; 'A game-changer in the industry.' – Nikhil Kamath</strong></p>
+    </div>
+  </div>
+
+  <section id="about-us">
+    <h2>About Us</h2>
+    <p>At SPIN, our mission is to empower individuals and businesses with the tools and insights they need to succeed. Founded in [Year], we have been at the forefront of [Industry/Niche], providing innovative solutions and building a strong community of like-minded professionals.
+
+      Our journey began with a simple idea: to create a platform where quality and reliability meet innovation. Today, we continue to push the boundaries, offering services and products that make a real difference in the lives of our customers.
+      
+      We believe in the power of collaboration and are committed to delivering excellence in everything we do. Our team is passionate, experienced, and dedicated to helping you achieve your goals. Join us as we continue to grow and make a positive impact in the world.</p>
+  </section>
+
+  <section id="contact-us">
+    <h2>Contact Us</h2>
+    <p>Email: contact@spin.com</p>
+    <p>Phone: 123-456-7890</p>
+    <a href="#" class="social-link">Facebook</a>
+    <a href="#" class="social-link">Twitter</a>
+    <a href="#" class="social-link">Instagram</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Influencer Sponsor Collaboration Platform. All Rights Reserved.</p>
+    <a href="#" class="social-link">Terms of Service</a> | <a href="#" class="social-link">Privacy Policy</a>
+  </footer>
+
+</body>
+</html>

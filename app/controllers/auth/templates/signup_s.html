@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Sign Up</title>
+    <link rel="stylesheet" href="static/css/signup_s.css">
+</head>
+<body>
+    
+    <header>
+        <h1>SPIN</h1>
+        <nav>
+          <a href="#about-us" class="header-button">About Us</a>
+          <a href="#about-us" class="header-button">Contact Us</a>
+          <a href="#contact-us" class="header-button">Help</a>
+        </nav>
+      </header>
+    <div class="container mt-5">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <h3>{{ message }}</h3>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div> 
+<div class="custom-container mt-5">
+    <h1 class="form-title">Sponsor Sign Up</h1>
+    <form action="{{ url_for('auth.signup_s') }}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your Username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Phone Number</label>
+            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number">
+        </div>
+        
+        <div class="form-group">
+            <label for="industry">Industry</label>
+            <select class="form-control" id="industry" name="industry">
+                <option>Fashion</option>
+                <option>Beauty</option>
+                <option>Fitness and Health</option>
+                <option>Travel</option>
+                <option>Food and Beverage</option>
+                <option>Lifestyle</option>
+                <option>Technology</option>
+                <option>Finance</option>
+                <option>Education</option>
+                <option>Entertainment</option>
+                <option>Photography</option>
+                <option>Art and Craft</option>
+                <option>Automotive</option>
+                <option>Gaming</option>
+                <option>Pet Care</option>
+                <option>Green Living and Sustainability</option>
+                <option>Relationships and Dating</option>
+                <option>Motivational and Inspirational</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="picture">Profile Picture</label>
+            <input type="file" class="form-control" id="picture" name="picture">
+        </div>
+        <a href="{{url_for('profiles.sponsor_dashboard')}}"><button type="submit" class="btn btn-custom btn-block">Sign Up</button></a>
+    </form>
+    
+</div>
+</body>
+</html>

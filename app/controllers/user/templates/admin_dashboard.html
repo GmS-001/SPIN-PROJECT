@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="static/css/admin_dashboard.css">
+</head>
+<body>
+    <header>
+        <h1>SPIN ADMIN</h1>
+        <nav>
+          <a href = '{{url_for("user.display_database")}}' class="header-button">FULL DATABASE</a>
+          <a href="#about-us" class="header-button">About Us</a>
+          <a href="#about-us" class="header-button">Contact Us</a>
+          <a href="#contact-us" class="header-button">Help</a>
+        </nav>
+      </header>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <h3>{{ message }}</h3>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div> 
+    <div class = 'active-user'>
+        <div class = 'active-block'>
+            <div class = 'active-number'>
+                <a href="{{url_for('user.display_sponsors')}}">{{sponsor_number}}</a>
+            </div>
+            <h2 class = 'active-name'>
+                ACTIVE SPONSORS
+            </h2>
+        </div>
+        <div class = 'active-block'>
+            <div class = 'active-number'>
+                <a href="{{url_for('user.display_influencers')}}">{{influencer_number}}</a>
+            </div>
+            <h2 class = 'active-name'>
+                ACTIVE INFLUENCERS
+            </h2>
+        </div>
+    </div>
+
+    <div class = 'active-user'>
+        <div class = 'active-block'>
+            <div class = 'active-number'>
+                <a href="{{url_for('user.live_campaign')}}">{{live_campaign}}</a>
+            </div>
+            <h2 class = 'active-name'>
+                LIVE CAMPAIGNS
+            </h2>
+        </div>
+        <div class = 'active-block'>
+            <div class = 'active-number'>
+                <a href="{{url_for('user.display_adrequest')}}">{{adRequest_number}}</a>
+            </div>
+            <h2 class = 'active-name'>
+                REQUESTS PENDING
+            </h2>
+        </div>
+    </div>
+    <div class = 'active-user'>
+        <div class = 'active-block'>
+            <div class = 'active-number'>
+                <a href="{{url_for('user.completed_campaigns')}}">{{completed_campaign}}</a>
+            </div>
+            <h2 class = 'active-name'>
+                COMPLETED CAMPAIGNS
+            </h2>
+        </div>
+        <div class = 'active-block'>
+            <div class = 'active-number'>
+                <a href="{{url_for('user.flaggd_users')}}">{{flaggd_users}}</a>
+            </div>
+            <h2 class = 'active-name'>
+                FLAGGED USERS
+            </h2>
+        </div>
+    </div>
+
+    <div class = 'flag'>
+        <h3>-----Flag any user who seem shady to you ------</h3>
+    </div>
+    <div class = 'flag-container'>
+        <form action="{{ url_for('user.flag_user') }}" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" required>
+        
+            <input type="radio" id="flag" name="action" value="flag" checked>
+            <label for="flag">Flag</label>
+        
+            <input type="radio" id="unflag" name="action" value="unflag">
+            <label for="unflag">Unflag</label>
+        
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

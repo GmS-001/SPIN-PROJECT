@@ -1,0 +1,53 @@
+{% extends "login_layout.html" %}
+
+{% block title %}
+All Influencers
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="form-title">All Influencers</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Phone Number</th>
+                <th>Date of Birth</th>
+                <th>Niche</th>
+                <th>Gender</th>
+                <th>campaigns</th>
+                <th>ad_requests</th>
+                <th>is_flagged</th>
+                <th>Ongoing Campaigns</th>
+                <th>Successful Campaigns</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for influencer in influencers %}
+            <tr>
+                <td>{{ influencer.id }}</td>
+                <td>{{ influencer.name }}</td>
+                <td>{{ influencer.username }}</td>
+                <td>{{ influencer.email }}</td>
+                <td>{{ influencer.password }}</td>
+                <td>{{ influencer.phone_number }}</td>
+                <td>{{ influencer.dob }}</td>
+                <td>{{ influencer.niche }}</td>
+                <td>{{ influencer.gender }}</td>
+                <td>{{ influencer.campaigns }}</td>
+                <td>{{ influencer.ad_requests }}</td>
+                <td>{{ influencer.is_flagged }}</td>
+                <td>{{ influencer.ongoing_campaigns }}</td>
+                <td>{{ influencer.successful_campaigns }}</td>
+                <td>{{ influencer.picture }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
